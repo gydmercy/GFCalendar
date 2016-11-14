@@ -4,7 +4,7 @@
 
 ## Screenshots
 
-![Screenshot](http://7xjlak.com1.z0.glb.clouddn.com/gfcalendarIMG_5954.PNG)
+![Screenshot](http://7xjlak.com1.z0.glb.clouddn.com/gfcalendarimg_new.PNG)
 
 
 ## License

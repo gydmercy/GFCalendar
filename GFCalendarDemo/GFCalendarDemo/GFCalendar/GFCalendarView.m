@@ -102,13 +102,6 @@
         
     }
     
-    CGFloat scale = [UIScreen mainScreen].scale;
-    CGFloat separatorLineHeight = 1.0 / scale;
-    
-    UIView *separatorLine = [[UIView alloc] initWithFrame:CGRectMake(0.0, height - separatorLineHeight, frame.size.width, separatorLineHeight)];
-    separatorLine.backgroundColor = kCalendarBasicColor;
-    [view addSubview:separatorLine];
-    
     return view;
     
 }
