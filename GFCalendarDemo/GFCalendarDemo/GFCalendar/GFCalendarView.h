@@ -33,7 +33,7 @@ typedef void (^DidSelectDayHandler)(NSInteger, NSInteger, NSInteger);
  *  日期点击回调
  *  block 的参数表示当前日期的 NSDate 对象
  */
-@property (nonatomic, copy) DidSelectDayHandler didSelectDayHandler;
+@property (nonatomic, strong) DidSelectDayHandler didSelectDayHandler;
 
 
 @end
