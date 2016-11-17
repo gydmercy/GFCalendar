@@ -2,9 +2,9 @@
 
 
 
-## Screenshots
+## Screenshot
 
-![Screenshot](http://7xjlak.com1.z0.glb.clouddn.com/gfcalendarimg_new.PNG)
+![Screenshot](http://7xjlak.com1.z0.glb.clouddn.com/gfcalendar2016-11-17%2010_32_53.gif)
 
 
 ## License
