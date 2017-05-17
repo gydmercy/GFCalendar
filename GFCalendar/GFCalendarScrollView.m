@@ -24,8 +24,6 @@
 
 @implementation GFCalendarScrollView
 
-#define kCalendarBasicColor [UIColor colorWithRed:231.0 / 255.0 green:85.0 / 255.0 blue:85.0 / 255.0 alpha:1.0]
-//#define kCalendarBasicColor [UIColor colorWithRed:252.0 / 255.0 green:60.0 / 255.0 blue:60.0 / 255.0 alpha:1.0]
 
 static NSString *const kCellIdentifier = @"cell";
 
@@ -76,10 +74,16 @@ static NSString *const kCellIdentifier = @"cell";
     return _monthArray;
 }
 
+- (void)setCalendarBasicColor:(UIColor *)calendarBasicColor {
+    _calendarBasicColor = calendarBasicColor;
+    [_collectionViewL reloadData];
+    [_collectionViewM reloadData];
+    [_collectionViewR reloadData];
+}
+
 - (NSNumber *)previousMonthDaysForPreviousDate:(NSDate *)date {
     return [[NSNumber alloc] initWithInteger:[[date previousMonthDate] totalDaysInMonth]];
 }
-
 
 - (void)setupCollectionViews {
         
@@ -94,21 +98,21 @@ static NSString *const kCellIdentifier = @"cell";
     _collectionViewL = [[UICollectionView alloc] initWithFrame:CGRectMake(0.0, 0.0, selfWidth, selfHeight) collectionViewLayout:flowLayout];
     _collectionViewL.dataSource = self;
     _collectionViewL.delegate = self;
-    _collectionViewL.backgroundColor = [UIColor clearColor];
+    _collectionViewL.backgroundColor = [UIColor whiteColor];
     [_collectionViewL registerClass:[GFCalendarCell class] forCellWithReuseIdentifier:kCellIdentifier];
     [self addSubview:_collectionViewL];
     
     _collectionViewM = [[UICollectionView alloc] initWithFrame:CGRectMake(selfWidth, 0.0, selfWidth, selfHeight) collectionViewLayout:flowLayout];
     _collectionViewM.dataSource = self;
     _collectionViewM.delegate = self;
-    _collectionViewM.backgroundColor = [UIColor clearColor];
+    _collectionViewM.backgroundColor = [UIColor whiteColor];
     [_collectionViewM registerClass:[GFCalendarCell class] forCellWithReuseIdentifier:kCellIdentifier];
     [self addSubview:_collectionViewM];
     
     _collectionViewR = [[UICollectionView alloc] initWithFrame:CGRectMake(2 * selfWidth, 0.0, selfWidth, selfHeight) collectionViewLayout:flowLayout];
     _collectionViewR.dataSource = self;
     _collectionViewR.delegate = self;
-    _collectionViewR.backgroundColor = [UIColor clearColor];
+    _collectionViewR.backgroundColor = [UIColor whiteColor];
     [_collectionViewR registerClass:[GFCalendarCell class] forCellWithReuseIdentifier:kCellIdentifier];
     [self addSubview:_collectionViewR];
 
@@ -126,7 +130,7 @@ static NSString *const kCellIdentifier = @"cell";
     [userInfo setObject:[[NSNumber alloc] initWithInteger:currentMonthInfo.year] forKey:@"year"];
     [userInfo setObject:[[NSNumber alloc] initWithInteger:currentMonthInfo.month] forKey:@"month"];
     
-    NSNotification *notify = [[NSNotification alloc] initWithName:@"ChangeCalendarHeaderNotification" object:nil userInfo:userInfo];
+    NSNotification *notify = [[NSNotification alloc] initWithName:@"GFCalendar.ChangeCalendarHeaderNotification" object:nil userInfo:userInfo];
     [[NSNotificationCenter defaultCenter] postNotification:notify];
 }
 
@@ -182,7 +186,7 @@ static NSString *const kCellIdentifier = @"cell";
             // 标识今天
             if ((monthInfo.month == [[NSDate date] dateMonth]) && (monthInfo.year == [[NSDate date] dateYear])) {
                 if (indexPath.row == [[NSDate date] dateDay] + firstWeekday - 1) {
-                    cell.todayCircle.backgroundColor = kCalendarBasicColor;
+                    cell.todayCircle.backgroundColor = self.calendarBasicColor;
                     cell.todayLabel.textColor = [UIColor whiteColor];
                 } else {
                     cell.todayCircle.backgroundColor = [UIColor clearColor];
@@ -222,7 +226,7 @@ static NSString *const kCellIdentifier = @"cell";
             // 标识今天
             if ((monthInfo.month == [[NSDate date] dateMonth]) && (monthInfo.year == [[NSDate date] dateYear])) {
                 if (indexPath.row == [[NSDate date] dateDay] + firstWeekday - 1) {
-                    cell.todayCircle.backgroundColor = kCalendarBasicColor;
+                    cell.todayCircle.backgroundColor = self.calendarBasicColor;
                     cell.todayLabel.textColor = [UIColor whiteColor];
                 } else {
                     cell.todayCircle.backgroundColor = [UIColor clearColor];
@@ -263,7 +267,7 @@ static NSString *const kCellIdentifier = @"cell";
             // 标识今天
             if ((monthInfo.month == [[NSDate date] dateMonth]) && (monthInfo.year == [[NSDate date] dateYear])) {
                 if (indexPath.row == [[NSDate date] dateDay] + firstWeekday - 1) {
-                    cell.todayCircle.backgroundColor = kCalendarBasicColor;
+                    cell.todayCircle.backgroundColor = self.calendarBasicColor;
                     cell.todayLabel.textColor = [UIColor whiteColor];
                 } else {
                     cell.todayCircle.backgroundColor = [UIColor clearColor];

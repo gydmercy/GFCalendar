@@ -30,6 +30,12 @@ typedef void (^DidSelectDayHandler)(NSInteger, NSInteger, NSInteger);
 
 
 /**
+ *  calendar 基本颜色
+ */
+@property (nonatomic, strong) UIColor *calendarBasicColor;
+
+
+/**
  *  日期点击回调
  *  block 的参数表示当前日期的 NSDate 对象
  */

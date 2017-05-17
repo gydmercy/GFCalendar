@@ -34,6 +34,7 @@
     CGPoint origin = CGPointMake(10.0, 64.0 + 70.0);
     
     GFCalendarView *calendar = [[GFCalendarView alloc] initWithFrameOrigin:origin width:width];
+//    calendar.calendarBasicColor = [UIColor cyanColor]; // 更改颜色
     
     // 点击某一天的回调
     calendar.didSelectDayHandler = ^(NSInteger year, NSInteger month, NSInteger day) {
